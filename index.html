@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <title>Only Js</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <label for="goal">To do list</label>
+
+        <div v-if="!estadoBoton">
+          <input type="text" id="goal" v-model="valorIngresado" />
+          <button v-on:click="agregarProposito">Agregar tarea</button>
+        </div>
+
+        <div v-else>
+          <input type="text" id="goal" v-model="valorIngresado" />
+          <button v-on:click="actualizarProposito">Editar tarea</button>
+        </div>
+        
+      </div>
+      <ul>
+        <li v-for="(item, index) in propositos" :key="item.key">
+          {{item}} 
+          <div v-if="!estadoBoton">
+            <button v-on:click="eliminarProposito(index)">Eliminar tarea</button> 
+            <button v-on:click="editarProposito(index, item)">Editar tarea</button> 
+          </div>
+          <div v-else>
+
+          </div>
+           
+        </li>
+        
+      </ul>
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
